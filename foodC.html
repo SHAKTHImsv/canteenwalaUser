@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Wala</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- Firebase SDK with type="module" -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js"></script>
+</head>
+<body class="bg-purple-100">
+    <nav class="bg-purple-300 p-4 m-5 rounded-lg">
+        <div class="container mx-auto flex items-center justify-between">
+          <div class="text-purple text-2xl font-bold">Canteenwala</div>
+      
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-6">
+            <a href="#home" class="text-white hover:text-purple-800">Home</a>
+            <a href="#menu" class="text-white hover:text-purple-800">Menu</a>
+            <a href="#about" class="text-white hover:text-purple-800">About</a>
+          </div>
+      
+          <!-- Mobile Menu Button -->
+          <button onclick="setIsMobileMenuOpen(!isMobileMenuOpen)" class="md:hidden text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-purple-300 p-4">
+          <a href="#homeSection" class="block text-purple-800 py-2">Home</a>
+          <a href="#menuSection" class="block text-purple-800 py-2">Menu</a>
+          <a href="#about" class="block text-purple-800 py-2">About</a>
+        </div>
+      </nav>
+
+
+    <section class="grid p-6">
+        <div class="cards flex justify-center">
+            <div class="card1 bg-purple-300 flex justify-center flex-col w-90 p-5" id="foodCourtCanteen">
+                <img src="dep.jpg" alt="" class="w-80 h-80 rounded-lg p-5">
+                <h1 class="text-center text-xl font-semibold mt-4 mb-4">Department Store</h1> <!-- Food Court is the main canteen -->
+            </div>
+        </div>
+    </section>
+
+    <div id="menu-items"></div>
+
+    <script src="section.js"></script>
+    <!-- Corrected to use type="module" -->
+    <script type="module" src="fcscript.js"></script>
+
+</body>
+</html>
