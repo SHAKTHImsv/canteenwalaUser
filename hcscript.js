@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listeners for each sub-canteen (sub-cards)
     Himalayan.addEventListener("click", () => fetchMenuItems('hostelCanteen', 'Himalayan'));
     Marina.addEventListener("click", () => fetchMenuItems('hostelCanteen', 'Marina'));
-    Neelagiri.addEventListener("click", () => fetchMenuItems('hostelCanteen', 'Neelagiri'));
+    Neelagiri.addEventListener("click", () => fetchMenuItems('hostelCanteen', 'Nilgiri'));
 
     Vivekanandha.addEventListener("click", () => fetchMenuItems('hostelCanteen', 'Vivekanandha'));
 });
