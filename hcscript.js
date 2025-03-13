@@ -45,25 +45,21 @@ function fetchMenuItems(canteenName, subCanteenName) {
             menu.innerHTML = ''; // Clear previous menu items
             snapshot.forEach((itemSnapshot) => {
                 const itemdata = itemSnapshot.val();
-
-                // Log the fetched item data for debugging
-                
+                const itemId = itemSnapshot.key; // Get the unique item ID
 
                 // Ensure the itemdata has the right structure
                 if (itemdata && itemdata.items) {
                     // Only proceed if the canteen is "Hostel Canteen" and the subCanteen matches the clicked one
                     if (itemdata.canteen === canteenName && itemdata.subCanteen.toLowerCase().includes(subCanteenName.toLowerCase())) {
-                        
-                    
 
                         // Loop through the items and display each one
-                        itemdata.items.forEach((item) => {
-                            
+                        itemdata.items.forEach((item, index) => {
                             menu.innerHTML += `
-                                <div class="sub-cards p-6">
-                                    <div class="sub-card1 p-2 cards bg-purple-300">
+                                <div class="sub-cards" id="item-${itemId}-${index}">
+                                    <div class="sub-card1 sub-card1 flex bg-black p-4 text-white flex-col gap-5 my-3">
                                         <h1 class="text-center text-2xl">${item.itemName}</h1>
-                                        <h2 class="text-center my-2">Price: ₹${item.itemPrice}</h2>
+                                        <h2 class="text-center text-1xl">Price: ₹${item.itemPrice}</h2>
+                                        
                                     </div>
                                 </div>
                             `;
@@ -71,6 +67,7 @@ function fetchMenuItems(canteenName, subCanteenName) {
                     }
                 }
             });
+
         } else {
             console.log('No data found.');
             menu.innerHTML = "<p>No menu items available for this sub-canteen.</p>";
