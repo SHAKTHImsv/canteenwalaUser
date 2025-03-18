@@ -55,7 +55,7 @@ function fetchMenuItems(canteenName, subCanteenName) {
                         // Loop through the items and display each one
                         itemdata.items.forEach((item, index) => {
                             menu.innerHTML += `
-                                <div class="sub-cards" id="item-${itemId}-${index}">
+                                <div class="sub-cards p-4" id="item-${itemId}-${index}">
                                     <div class="sub-card1 sub-card1 flex bg-black p-4 text-white flex-col gap-5 my-3">
                                         <h1 class="text-center text-2xl">${item.itemName}</h1>
                                         <h2 class="text-center text-1xl">Price: ₹${item.itemPrice}</h2>
