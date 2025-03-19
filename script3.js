@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
               // Loop through the items array and display them
               itemData.items.forEach((item, index) => {
                 menuItems.innerHTML += `
-                  <div class="sub-cards">
+                  <div class="sub-cards p-4">
                     <div class="sub-card1 flex bg-black p-4 text-white flex-col gap-5 my-3">
                       <h1 class="text-center text-2xl">${item.itemName}</h1>
                       <h2 class="text-center text-1xl">Price: ${item.itemPrice}</h2>
