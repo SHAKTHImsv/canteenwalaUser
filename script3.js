@@ -24,42 +24,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to fetch menu items for the selected cafe
   function fetchMenuItems(canteenName, subCanteenName) {
-    document.querySelector(".cards").style.display = "none";
-  
-    const itemsRef = ref(database, 'items');  // Reference to items in the database
-  
-    // Fetch all items from the database
+    document.querySelector(".cards").style.display = "none"; // Hide the cards section when fetching menu
+
+    const itemsRef = ref(database, 'items');
+
     get(itemsRef).then((snapshot) => {
       if (snapshot.exists()) {
-        menuItems.innerHTML = ''; // Clear existing items
-  
+        menuItems.innerHTML = '';  // Clear previous menu items
+
+        let itemsFound = false; // Flag to track if any items are found
+
         snapshot.forEach((itemSnapshot) => {
           const itemData = itemSnapshot.val();
-  
-          // Check if the itemData and items array exist
+
           if (itemData && itemData.items && Array.isArray(itemData.items)) {
-            // Check if the canteen and subCanteen match the selected cafe
             if (itemData.canteen === canteenName && itemData.subCanteen === subCanteenName) {
-              // Loop through the items array and display them
-              itemData.items.forEach((item, index) => {
+              itemsFound = true; // Set flag to true if items are found for the selected canteen
+
+              itemData.items.forEach((item) => {
                 menuItems.innerHTML += `
-                  <div class="sub-cards p-4">
+                  <div class="sub-cards px-6">
                     <div class="sub-card1 flex bg-black p-4 text-white flex-col gap-5 my-3">
                       <h1 class="text-center text-2xl">${item.itemName}</h1>
-                      <h2 class="text-center text-1xl">Price: ${item.itemPrice}</h2>
+                      <h2 class="text-center text-1xl">Price: ₹${item.itemPrice}</h2>
+                      <h2 class="text-center text-1xl">Available: ${item.itemQuantity}</h2>
+                      <button class="add-to-cart bg-purple-500 p-2 text-white rounded flex justify-center" onclick="window.OrderForm()">Add to Cart</button>
                     </div>
                   </div>
                 `;
               });
             }
-          } else {
-            console.warn('Item data is missing or not an array: ', itemSnapshot.key);
           }
         });
-  
-  
-        
-  
+
+        if (!itemsFound) {
+          menuItems.innerHTML = "No items available in the selected canteen.";
+        }
       } else {
         menuItems.innerHTML = "No items available in the selected canteen.";
       }
@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
       menuItems.innerHTML = "Error fetching menu items. Please try again.";
     });
   }
-  
 
   // Event listeners for each cafe
   mustard.addEventListener('click', () => fetchMenuItems('mainCanteen', 'Mustard Cafe'));
@@ -76,3 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
   canteen.addEventListener('click', () => fetchMenuItems('mainCanteen', 'Saffron Cafe'));
   cinnamon.addEventListener('click', () => fetchMenuItems('mainCanteen', 'Cinnamon Cafe'));
 });
+
+// Define the OrderForm globally
+window.OrderForm = function () {
+  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSeKw7Op06RE8yWq1XcPJltkIyoU0lb4e-I7jn4wYEsIJDLuoA/viewform?usp=header";
+}
