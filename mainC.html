@@ -1,73 +1,74 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Canteenwala</title>
     <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js"></script>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body class="bg-purple-100">
+    <!-- Navigation -->
     <nav class="bg-purple-300 p-4 m-5 rounded-lg">
         <div class="container mx-auto flex items-center justify-between">
-          <div class="text-purple text-2xl font-bold">Canteenwala</div>
-      
-          <!-- Desktop Menu -->
-          <div class="hidden md:flex space-x-6">
-            <a href="#home" class="text-white hover:text-purple-800">Home</a>
-            <a href="#menu" class="text-white hover:text-purple-800">Menu</a>
-            <a href="#about" class="text-white hover:text-purple-800">About</a>
-          </div>
-      
-          <!-- Mobile Menu Button -->
-          <button onclick="setIsMobileMenuOpen(!isMobileMenuOpen)" class="md:hidden text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+            <div class="text-purple text-2xl font-bold">Canteenwala</div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-white hover:text-purple-800">Home</a>
+                <a href="#menu" class="text-white hover:text-purple-800">Menu</a>
+                <a href="#about" class="text-white hover:text-purple-800">About</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="setIsMobileMenuOpen(!isMobileMenuOpen)" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
-      
+
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-purple-300 p-4">
-          <a href="#homeSection" class="block text-purple-800 py-2">Home</a>
-          <a href="#menuSection" class="block text-purple-800 py-2">Menu</a>
-          <a href="#about" class="block text-purple-800 py-2">About</a>
+            <a href="#homeSection" class="block text-purple-800 py-2">Home</a>
+            <a href="#menuSection" class="block text-purple-800 py-2">Menu</a>
+            <a href="#about" class="block text-purple-800 py-2">About</a>
         </div>
-      </nav>
-      
+    </nav>
 
-      <section class="grid p-8">
+    <!-- Cafe Cards Section -->
+    <section class="grid p-12">
         <div class="cards grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
             <div class="card1 bg-purple-300" id="Mustard">
                 <img src="mus.jpg" alt="Mustard Cafe" class="w-full h-auto rounded-lg p-5">
                 <h1 class="text-center text-xl font-semibold mt-4 mb-4">Mustard Cafe</h1>
             </div>
-            
+
             <div class="card1 bg-purple-300" id="Cucumber">
                 <img src="cuc.jpg" alt="Cucumber Cafe" class="w-full h-auto rounded-lg p-5">
                 <h1 class="text-center text-xl font-semibold mt-4 mb-4">Cucumber Cafe</h1>
             </div>
-            
+
             <div class="card1 bg-purple-300" id="Canteen">
                 <img src="can.jpg" alt="Saffron Cafe" class="w-full h-auto rounded-lg p-5">
                 <h1 class="text-center text-xl font-semibold mt-4 mb-4">Saffron Cafe</h1>
             </div>
-            
+
             <div class="card1 bg-purple-300" id="Cinnamon">
                 <img src="cin.jpg" alt="Cinnamon Cafe" class="w-full h-auto rounded-lg p-5">
                 <h1 class="text-center text-xl font-semibold mt-4 mb-4">Cinnamon Cafe</h1>
             </div>
         </div>
     </section>
-    
 
-        <div id="menu-items"></div>
-    </section>
+    <!-- Menu Items Section -->
+    <section id="menu-items" class="p-8"></section>
+
+    <!-- Remove Order Form Modal (No longer needed) -->
 
     <script src="section.js"></script>
     <script type="module" src="script3.js"></script>
-
 </body>
 </html>
